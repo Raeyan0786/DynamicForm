@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import Form from '../models/Form'
-import Medicine, { IMedicine } from '../models/Medicine';
 
 export const getMedicines = async (req: Request, res: Response) => {
     try {
@@ -58,7 +57,7 @@ export const updateMedicine = async (req: Request, res: Response) => {
 };
 
 export const deleteMedicine = async (req: Request, res: Response) => {
-  console.log(req.params.id)
+  
   try {
     const form = await Form.findById(req.params.id);
     if (form) {

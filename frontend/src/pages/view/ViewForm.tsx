@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { useParams} from 'react-router-dom';
+import { useParams,useNavigate} from 'react-router-dom';
 import { toast } from "react-hot-toast";
 import { Input } from '../../components';
 import { InputType } from '../create/CreateOrUpdate';
@@ -10,8 +10,7 @@ const ViewForm = () => {
   const [formValues, setFormValues] = useState<{[key: number]: string}>({});
   const [errors, setErrors] = useState<{[key: number]: string}>({});
   const parms=useParams();
-  console.log("parms")
-  console.log(parms.id)
+  const navigate = useNavigate();
 
   const fetchForms = async () => {
     try {
@@ -95,10 +94,8 @@ const ViewForm = () => {
     setErrors(newErrors);
 
     if (!hasErrors) {
-      console.log('Form Values:', formValues);
       toast.success("Form submitted successfullly")
       
-      // Reset form values after successful submission
       const initialValues = inputs.reduce((acc: {[key: number]: string}, input: InputType) => {
         acc[input.id] = '';
         return acc;
@@ -124,7 +121,7 @@ const ViewForm = () => {
                 <div key={input.id} className="relative p-4 w-[90%]">
                   <Input
                     type={input.type}
-                    label={input.placeholder}
+                    label={input.placeholder || input.title}
                     value={formValues[input.id]}
                     onChange={(e) => handleInputChange(input.id, e.target.value)}
                     className='mb-4'
@@ -136,7 +133,14 @@ const ViewForm = () => {
                 </div>
               ))}
             </div>
-            <div className='flex justify-center'>
+            <div className='flex justify-center gap-8'>
+            <button 
+                type="button"
+                className='rounded-lg text-white bg-green-700 font-medium p-4 mt-4 mb-4'
+                onClick={()=>navigate(-1)}
+              >
+                Back
+              </button>
               <button 
                 type="submit"
                 className='rounded-lg text-white bg-green-700 font-medium p-4 mt-4 mb-4'

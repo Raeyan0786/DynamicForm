@@ -10,7 +10,7 @@ const formSchema = new mongoose_1.default.Schema({
             id: { type: Number, required: true },
             type: { type: String, required: true },
             title: { type: String, required: true },
-            placeholder: { type: String, required: true }
+            placeholder: { type: String }
         }],
     createdAt: {
         type: Date,

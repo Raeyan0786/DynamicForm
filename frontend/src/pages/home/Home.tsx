@@ -55,7 +55,6 @@ const Home = () => {
         },
       });
       const data = await response.json();
-      console.log(data);
       setIsDelete(false)
       fetchForms()
     } catch (error) {

@@ -6,7 +6,6 @@ import {
   updateMedicine,
   deleteMedicine,
 } from '../controllers/formController';
-import { protect, storeManagerOnly } from '../middleware/authMiddleware';
 
 const router = express.Router();
 

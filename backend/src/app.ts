@@ -17,20 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 const PORT = process.env.PORT || 5000;
 mongoose.connect('mongodb://localhost:27017/form-builder', { useUnifiedTopology: true, useNewUrlParser: true} as any)
-// .then(() => {
-//   app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-//   });
-// }).catch(err => {
-//   console.error(err.message);
-// });
 
-// app.use('/api/events', eventRoutes);
-
-// app.use('/api/auth', authRoutes);
-// app.use('/api/medicines', medicineRoutes);
-// app.use('/api/sales-executives', salesExecutiveRoutes);
-// app.use('/api/orders', orderRoutes);
 app.use('/api/forms', formRoutes)
 
 
@@ -39,10 +26,5 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// const PORT = process.env.PORT || 5000;
 
-// mongoose.connect('mongodb://localhost:27017/event-management', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
 

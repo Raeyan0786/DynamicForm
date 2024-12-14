@@ -74,7 +74,6 @@ const updateMedicine = (req, res) => __awaiter(void 0, void 0, void 0, function*
 });
 exports.updateMedicine = updateMedicine;
 const deleteMedicine = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.params.id);
     try {
         const form = yield Form_1.default.findById(req.params.id);
         if (form) {
